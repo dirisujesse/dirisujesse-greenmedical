@@ -10,7 +10,7 @@ class ButtonText extends StatelessWidget {
 
   ButtonText(
     this.text, {
-    this.fontSize = 35,
+    this.fontSize = 40,
     this.textColor,
     this.fontWeight = FontWeight.normal,
   });

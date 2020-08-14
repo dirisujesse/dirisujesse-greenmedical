@@ -13,10 +13,9 @@ ThemeData appThemeData() {
     ),
     tabBarTheme: base.tabBarTheme.copyWith(
       indicator: UnderlineTabIndicator(
-        borderSide: BorderSide(
-          color: appTeal,
-        )
-      ),
+          borderSide: BorderSide(
+        color: appTeal,
+      )),
       unselectedLabelColor: appDarkGrey,
       labelColor: appBlack,
     ),
@@ -38,12 +37,11 @@ ThemeData appThemeData() {
     cardColor: white,
     textSelectionColor: appTeal.withOpacity(.4),
     errorColor: appRed,
-    textTheme: base.textTheme
-        .apply(
-          displayColor: appBlack,
-          bodyColor: appWhite,
-          fontFamily: 'Ubuntu',
-        ),
+    textTheme: base.textTheme.apply(
+      displayColor: appBlack,
+      bodyColor: appBlack,
+      fontFamily: 'Ubuntu',
+    ),
     primaryIconTheme: base.iconTheme.copyWith(
       size: 30,
       color: appBlack,
@@ -69,34 +67,33 @@ ThemeData appThemeData() {
         fontSize: base.textTheme.bodyText1.fontSize,
       ),
       errorBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: appRed,
-            width: 4,
-          ),
-          borderRadius: BorderRadius.circular(3),),
+        borderSide: BorderSide(
+          color: appRed,
+          width: 3,
+        ),
+        borderRadius: BorderRadius.circular(12),
+      ),
       focusedErrorBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: appRed,
-            width: 4.5,
-          ),
-          borderRadius: BorderRadius.circular(3),),
+        borderSide: BorderSide(
+          color: appRed,
+          width: 3.5,
+        ),
+        borderRadius: BorderRadius.circular(12),
+      ),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: appGray,
-          width: 4,
+          width: 3,
         ),
+        borderRadius: BorderRadius.circular(12),
       ),
       disabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: appGray.withOpacity(.8),
-          width: 4
-        ),
+        borderSide: BorderSide(color: appGray.withOpacity(.8), width: 3),
+        borderRadius: BorderRadius.circular(12),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: appGray,
-          width: 4.5
-        ),
+        borderSide: BorderSide(color: appGray, width: 3.5),
+        borderRadius: BorderRadius.circular(12),
       ),
     ),
     iconTheme: base.iconTheme.copyWith(

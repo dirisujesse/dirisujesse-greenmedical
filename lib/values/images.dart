@@ -11,9 +11,10 @@ class AppSvgs {
   const AppSvgs();
 
   static const String ambulance = "assets/images/svg/ambulance.svg";
+  static const String back = "assets/images/svg/back.svg";
   static const String call = "assets/images/svg/call.svg";
   static const String compass = "assets/images/svg/compass.svg";
-  static const String discharged = "assets/images/svg/discharged.svg";
+  static const String discharged = "assets/images/svg/dischared.svg";
   static const String loginHeader = "assets/images/svg/login_header.svg";
   static const String notepad = "assets/images/svg/notepad.svg";
   static const String steth = "assets/images/svg/stethoscope.svg";
