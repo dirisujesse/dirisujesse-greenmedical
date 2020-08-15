@@ -1,10 +1,10 @@
 class AppImages {
   const AppImages();
-  static const String docAmy = "assets/images/raster/doc_amy.png";
-  static const String docEmma = "assets/images/raster/doc_emma.png";
-  static const String docLily = "assets/images/raster/doc_lily.png";
-  static const String docMosby = "assets/images/raster/doc_mosby.png";
-  static const String docRoss = "assets/images/raster/doc_ross.png";
+  static const String docAmy = "assets/images/raster/docAmy.png";
+  static const String docEmma = "assets/images/raster/docEmma.png";
+  static const String docLily = "assets/images/raster/docLily.png";
+  static const String docMosby = "assets/images/raster/docMosby.png";
+  static const String docRoss = "assets/images/raster/docRoss.png";
 }
 
 class AppSvgs {

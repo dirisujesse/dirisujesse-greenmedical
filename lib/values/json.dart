@@ -1,5 +1,6 @@
 import 'package:roavapp/models/podos/dashboard_item.dart';
 import 'package:roavapp/models/podos/destination.dart';
+import 'package:roavapp/models/podos/physician.dart';
 import 'package:roavapp/values/images.dart';
 
 const List<DashboardItem> dashItems = [
@@ -32,6 +33,60 @@ const List<DashboardItem> dashItems = [
     title: "Discharged",
     icon: AppSvgs.discharged,
     route: "/discharges",
+  ),
+];
+
+const List<String> tabItems = [
+  "GP",
+  "Specialist",
+  "Dentist",
+  "Therapist",
+];
+
+const List<Physician> physicians = [
+  const Physician(
+    picture: AppImages.docLily,
+    name: "Dr. Lily Aldrin",
+    specialty: "Neurologist",
+    qalifications: [
+      "Specialist",
+      "Therapist",
+    ],
+  ),
+  const Physician(
+    picture: AppImages.docMosby,
+    name: "Dr. Ted Mosby",
+    specialty: "Pediatrician",
+    qalifications: [
+      "Specialist",
+      "GP",
+    ],
+  ),
+  const Physician(
+    picture: AppImages.docEmma,
+    name: "Dr. Emma Lee",
+    specialty: "Dermatologist",
+    qalifications: [
+      "Specialist",
+      "Therapist",
+    ],
+  ),
+  const Physician(
+    picture: AppImages.docRoss,
+    name: "Dr. Ross Geller",
+    specialty: "Cardiologist",
+    qalifications: [
+      "Specialist",
+    ],
+  ),
+  const Physician(
+    picture: AppImages.docAmy,
+    name: "Dr. Amy Joy",
+    specialty: "Gynecologist",
+    qalifications: [
+      "Specialist",
+      "Therapist",
+    ],
   ),
 ];
 

@@ -7,6 +7,7 @@ import 'package:roavapp/pages/covid/covid_page.dart';
 import 'package:roavapp/pages/dashboard/dashboard_page.dart';
 import 'package:roavapp/pages/emergency/emergency_page.dart';
 import 'package:roavapp/pages/map/map_page.dart';
+import 'package:roavapp/pages/physicians/physician_list_page.dart';
 import 'package:roavapp/pages/success/success_page.dart';
 
 final Map<String, Widget Function(BuildContext)> staticRoutes = {
@@ -16,6 +17,7 @@ final Map<String, Widget Function(BuildContext)> staticRoutes = {
   "/emergency": (BuildContext context) => const EmergencyPage(),
   "/covid": (BuildContext context) => const CovidPage(),
   "/success": (BuildContext context) => const SuccessPage(),
+  "/doctors": (BuildContext context) => const PhysicianListPage(),
   "/map": (BuildContext context) => const MapPage(),
 };
 
