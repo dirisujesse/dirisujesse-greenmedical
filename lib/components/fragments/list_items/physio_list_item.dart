@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:roavapp/components/fragments/spacers/app_sized_box.dart';
 import 'package:roavapp/components/typography/app_text.dart';
 import 'package:roavapp/models/podos/physician.dart';
 import 'package:roavapp/styles/colors.dart';
@@ -75,6 +76,7 @@ class PhysioListItem extends StatelessWidget {
                         color: appBlack,
                       ),
                     ),
+                    const AppSizedBox(height: .5),
                     AppText(
                       physician.specialty ?? "",
                       style: normalText.copyWith(

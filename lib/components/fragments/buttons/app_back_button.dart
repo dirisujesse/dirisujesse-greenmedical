@@ -8,13 +8,16 @@ import 'package:roavapp/values/images.dart';
 class AppBackButton extends StatelessWidget {
   final OnPressed onPressed;
   final bool _isPadded;
+  final Color bgColor;
 
   const AppBackButton({
     this.onPressed,
+    this.bgColor,
   }) : _isPadded = true;
 
   const AppBackButton.plain({
     this.onPressed,
+    this.bgColor
   }) : _isPadded = false;
 
   @override
@@ -24,7 +27,7 @@ class AppBackButton extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: InkWell(
         child: Container(
-          color: appWhite,
+          color: bgColor ?? appWhite,
           padding: _isPadded ? scaler.insets.symmetric(vertical: .5, horizontal: 2) : scaler.insets.zero,
           child: SvgPicture.asset(
             AppSvgs.back,

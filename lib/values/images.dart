@@ -5,6 +5,10 @@ class AppImages {
   static const String docLily = "assets/images/raster/docLily.png";
   static const String docMosby = "assets/images/raster/docMosby.png";
   static const String docRoss = "assets/images/raster/docRoss.png";
+  static const String voucher1 = "assets/images/raster/voucher1.png";
+  static const String voucher2 = "assets/images/raster/voucher2.png";
+  static const String voucher3 = "assets/images/raster/voucher3.png";
+  static const String voucher4 = "assets/images/raster/voucher4.png";
 }
 
 class AppSvgs {

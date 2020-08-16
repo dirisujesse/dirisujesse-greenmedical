@@ -24,6 +24,12 @@ class PhysioList extends StatelessWidget {
       itemBuilder: (context, idx) {
         return PhysioListItem(
           physician: physicians[idx],
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              "/doctors/detail",
+              arguments: physicians[idx],
+            );
+          },
         );
       },
       itemCount: physicians.length,
