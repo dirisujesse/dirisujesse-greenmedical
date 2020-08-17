@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:roavapp/models/podos/login_response.dart';
 import 'package:roavapp/models/podos/signup_response.dart';
+import 'package:roavapp/values/values.dart';
 
 class AuthService {
   final db = Hive.box("user_data");
@@ -43,6 +44,7 @@ class AuthService {
         "telephone": user["telephone"]
       });
       db.put("isLoggedIn", true);
+      dashboardIndex.value = null;
     } catch (_) {}
   }
 
