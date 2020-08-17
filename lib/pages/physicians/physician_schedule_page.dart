@@ -4,7 +4,9 @@ import 'package:roavapp/components/fragments/buttons/app_back_button.dart';
 import 'package:roavapp/components/fragments/buttons/app_button.dart';
 import 'package:roavapp/components/fragments/spacers/app_sized_box.dart';
 import 'package:roavapp/components/typography/app_text.dart';
+import 'package:roavapp/models/podos/appointment.dart';
 import 'package:roavapp/models/podos/physician.dart';
+import 'package:roavapp/services/appointment_service.dart';
 import 'package:roavapp/styles/colors.dart';
 import 'package:roavapp/styles/text_styles.dart';
 import 'package:roavapp/utils/dimensions.dart';
@@ -30,6 +32,7 @@ class _PhysioSchedulePageState extends State<PhysioSchedulePage> {
   ValueNotifier<DateTime> _selectedDay;
   ValueNotifier<num> _selectedHour;
   final DateTime today = DateTime.now();
+  final AppointmentService service = AppointmentService();
 
   @override
   void initState() {
@@ -209,20 +212,49 @@ class _PhysioSchedulePageState extends State<PhysioSchedulePage> {
           );
         },
       ),
-      bottomNavigationBar: Container(
-        constraints: BoxConstraints.tightFor(
-          width: scaler.sizer.width,
-          height: scaler.sizer.setHeight(11.8),
-        ),
-        padding: scaler.insets.fromLTRB(5, 1.5, 5, 4),
-        child: AppButton(
-          text: "Book",
-          onPressed: () {},
-          isBold: true,
-        ),
-        decoration: BoxDecoration(
-          color: appWhite,
-        ),
+      bottomNavigationBar: Builder(
+        builder: (context) {
+          return Container(
+            constraints: BoxConstraints.tightFor(
+              width: scaler.sizer.width,
+              height: scaler.sizer.setHeight(11.8),
+            ),
+            padding: scaler.insets.fromLTRB(5, 1.5, 5, 4),
+            child: AppButton(
+              text: "Book",
+              onPressed: () {
+                if (_selectedDay.value != null && _selectedHour.value != null) {
+                  final response = service.createAppointment(
+                    Appointment(
+                      id: "${widget.physio.picture}<>${_selectedHour.value}<>${_selectedDay.value.day}<>${_selectedDay.value.month}<>${_selectedDay.value.year}",
+                      date: _selectedDay.value.toIso8601String(),
+                      from: _selectedHour.value,
+                      to: _selectedHour.value + 1,
+                      physician: widget.physio.picture,
+                    ),
+                  );
+                  if (!response.isSuccessful) {
+                    return showSnack(
+                        context: context, message: response.message);
+                  }
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    "/success",
+                    (route) => false,
+                  );
+                } else {
+                  showSnack(
+                    context: context,
+                    message: "Please choose a date and time",
+                  );
+                }
+              },
+              isBold: true,
+            ),
+            decoration: BoxDecoration(
+              color: appWhite,
+            ),
+          );
+        },
       ),
     );
   }

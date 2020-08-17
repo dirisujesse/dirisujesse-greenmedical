@@ -50,17 +50,20 @@ class PhysioListItem extends StatelessWidget {
           children: [
             TableRow(
               children: [
-                Container(
-                  height: scaler.fontSizer.sp(140),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        physician.picture,
+                Hero(
+                  tag: physician.picture,
+                  child: Container(
+                    height: scaler.fontSizer.sp(140),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          physician.picture,
+                        ),
+                        fit: BoxFit.cover,
                       ),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      scaler.fontSizer.sp(20),
+                      borderRadius: BorderRadius.circular(
+                        scaler.fontSizer.sp(20),
+                      ),
                     ),
                   ),
                 ),

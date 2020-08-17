@@ -60,20 +60,23 @@ class PhysioDetailPage extends StatelessWidget {
                           children: [
                             TableRow(
                               children: [
-                                Container(
-                                  height: scaler.fontSizer.sp(230),
-                                  decoration: BoxDecoration(
-                                    color: appWhite,
-                                    border: Border.all(
-                                      color: appBlack.withOpacity(.1),
-                                    ),
-                                    borderRadius: BorderRadius.circular(
-                                      scaler.fontSizer.sp(20),
-                                    ),
-                                    image: DecorationImage(
-                                      image: AssetImage(physio.picture),
-                                      fit: BoxFit.cover,
-                                      alignment: Alignment.bottomCenter,
+                                Hero(
+                                  tag: physio.picture,
+                                  child: Container(
+                                    height: scaler.fontSizer.sp(230),
+                                    decoration: BoxDecoration(
+                                      color: appWhite,
+                                      border: Border.all(
+                                        color: appBlack.withOpacity(.1),
+                                      ),
+                                      borderRadius: BorderRadius.circular(
+                                        scaler.fontSizer.sp(20),
+                                      ),
+                                      image: DecorationImage(
+                                        image: AssetImage(physio.picture),
+                                        fit: BoxFit.cover,
+                                        alignment: Alignment.bottomCenter,
+                                      ),
                                     ),
                                   ),
                                 ),

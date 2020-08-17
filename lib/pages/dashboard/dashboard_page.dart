@@ -6,6 +6,7 @@ import 'package:roavapp/components/typography/name_text.dart';
 import 'package:roavapp/services/auth_service.dart';
 import 'package:roavapp/styles/colors.dart';
 import 'package:roavapp/utils/dimensions.dart';
+import 'package:roavapp/utils/helpers.dart';
 import 'package:roavapp/values/json.dart';
 import 'package:roavapp/values/values.dart';
 
@@ -60,12 +61,15 @@ class DashboardPage extends StatelessWidget {
                           width: scaler.fontSizer.sp(90),
                         ),
                         title: item.title,
-                        isActive: item.title == "Discharged" || activeIndex == dashItems.indexOf(item),
-                        activeColor: item.title == "Discharged"
-                            ? appOrange
-                            : appTeal,
+                        isActive: item.title == "Discharged" ||
+                            activeIndex == dashItems.indexOf(item),
+                        activeColor:
+                            item.title == "Discharged" ? appOrange : appTeal,
                         onTap: () {
                           if (item.route != "/discharges") {
+                            if (item.route == "/emergency") {
+                              emergencyCallHandler(context);
+                            }
                             Navigator.of(context).pushNamed(item.route);
                             dashboardIndex.value = dashItems.indexOf(item);
                           }

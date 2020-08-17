@@ -1,15 +1,15 @@
 import 'package:hive/hive.dart';
 import 'package:roavapp/models/podos/login_response.dart';
-import 'package:roavapp/models/podos/signup_response.dart';
+import 'package:roavapp/models/podos/service_response.dart';
 import 'package:roavapp/values/values.dart';
 
 class AuthService {
   final db = Hive.box("user_data");
   final appDb = Hive.box("app_data");
 
-  SignupResponse signup(String name, String telephone, String password) {
+  ServiceResponse signup(String name, String telephone, String password) {
     if (appDb.containsKey(telephone)) {
-      return SignupResponse(
+      return ServiceResponse(
         message: "A user already exists with this phone number",
         isSuccessful: false,
       );
@@ -29,7 +29,7 @@ class AuthService {
         "name": name,
       },
     );
-    return SignupResponse(
+    return ServiceResponse(
       message: "Yaay your signup was succesful",
       isSuccessful: true,
     );

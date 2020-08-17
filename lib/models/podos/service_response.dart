@@ -1,8 +1,8 @@
-class SignupResponse {
+class ServiceResponse {
   String message;
   bool isSuccessful;
 
-  SignupResponse({
+  ServiceResponse({
     this.message,
     this.isSuccessful,
   });
