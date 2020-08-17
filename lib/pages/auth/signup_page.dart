@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:roavapp/components/fragments/buttons/app_back_button.dart';
 import 'package:roavapp/components/fragments/buttons/app_button.dart';
 import 'package:roavapp/components/fragments/spacers/app_sized_box.dart';
 import 'package:roavapp/components/typography/app_text.dart';
@@ -9,7 +9,6 @@ import 'package:roavapp/styles/colors.dart';
 import 'package:roavapp/styles/text_styles.dart';
 import 'package:roavapp/utils/dimensions.dart';
 import 'package:roavapp/utils/snacks.dart';
-import 'package:roavapp/values/images.dart';
 import 'package:roavapp/values/regex.dart';
 
 class SignupPage extends StatefulWidget {
@@ -81,15 +80,7 @@ class _SignupPageState extends State<SignupPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: InkWell(
-                          child: SvgPicture.asset(AppSvgs.back),
-                          onTap: () {
-                            Navigator.of(context).maybePop();
-                          },
-                        ),
-                      ),
+                      AppBackButton.plain(),
                       InkWell(
                         child: AppText(
                           "LOGIN",
