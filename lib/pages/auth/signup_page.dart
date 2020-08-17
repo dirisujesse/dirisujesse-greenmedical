@@ -93,7 +93,7 @@ class _SignupPageState extends State<SignupPage> {
                       InkWell(
                         child: AppText(
                           "LOGIN",
-                          style: mediumText.copyWith(
+                          style: normalText.copyWith(
                             color: appTeal,
                           ),
                         ),

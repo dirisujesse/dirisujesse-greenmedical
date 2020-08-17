@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:roavapp/components/fragments/list_items/dashboard_list_item.dart';
 import 'package:roavapp/components/fragments/spacers/app_sized_box.dart';
 import 'package:roavapp/components/typography/app_text.dart';
+import 'package:roavapp/services/auth_service.dart';
 import 'package:roavapp/styles/colors.dart';
 import 'package:roavapp/styles/text_styles.dart';
 import 'package:roavapp/utils/dimensions.dart';
@@ -26,11 +27,31 @@ class DashboardPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                AppText(
-                  "Welcome, Kenneth",
-                  style: boldText.copyWith(
-                    fontSize: 50,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    AppText(
+                      "Welcome, Kenneth",
+                      style: boldText.copyWith(
+                        fontSize: 50,
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.settings_power,
+                        color: appBlack,
+                      ),
+                      onPressed: () {
+                        AuthService().logout();
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          "/login",
+                          (route) => false,
+                        );
+                      },
+                    )
+                  ],
                 ),
                 const AppSizedBox(height: 4),
                 for (final item in dashItems)
@@ -41,8 +62,11 @@ class DashboardPage extends StatelessWidget {
                       width: scaler.fontSizer.sp(90),
                     ),
                     title: item.title,
-                    isActive: item.title == "Discharged" || item.title == "Visit a doctor",
-                    activeColor: item.title == "Discharged" ? appOrange : item.title == "Visit a doctor" ? appTeal : appGray,
+                    isActive: item.title == "Discharged" ||
+                        item.title == "Visit a doctor",
+                    activeColor: item.title == "Discharged"
+                        ? appOrange
+                        : item.title == "Visit a doctor" ? appTeal : appGray,
                     onTap: () {
                       Navigator.of(context).pushNamed(item.route);
                     },

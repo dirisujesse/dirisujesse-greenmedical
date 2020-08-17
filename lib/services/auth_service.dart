@@ -46,14 +46,14 @@ class AuthService {
     } catch (_) {}
   }
 
-  set isPreviousUser (bool val) {
+  set isPreviousUser(bool val) {
     appDb.put("isPreviousUser", val);
   }
 
   LoginResponse login(String telephone, String password) {
     if (appDb.containsKey(telephone)) {
       final user = appDb.get(
-        "$telephone",
+        telephone,
         defaultValue: null,
       );
       if (user != null && user is Map && user["password"] == password) {
@@ -77,7 +77,7 @@ class AuthService {
     }
   }
 
-  void logout(String telephone, String password) {
+  void logout() {
     db.delete("currentUser");
     db.put("isLoggedIn", false);
   }
