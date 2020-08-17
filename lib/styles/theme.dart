@@ -66,14 +66,14 @@ ThemeData appThemeData() {
         color: appBlack.withOpacity(.5),
         fontSize: base.textTheme.bodyText1.fontSize,
       ),
-      errorBorder: UnderlineInputBorder(
+      errorBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: appRed,
           width: 3,
         ),
         borderRadius: BorderRadius.circular(12),
       ),
-      focusedErrorBorder: UnderlineInputBorder(
+      focusedErrorBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: appRed,
           width: 3.5,

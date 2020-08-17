@@ -9,16 +9,6 @@ class Validators {
     }
   }
 
-  static String email(String text) {
-    if (text == null ||  text.isEmpty) {
-      return "Email field cannot be empty";
-    } else if (!mailRegEx.hasMatch(text)) {
-      return "You have entered an invalid email, please provide a valid email";
-    } else {
-      return null;
-    }
-  }
-
   static String password(String text) {
     if (text == null ||  text.isEmpty) {
       return "Password field cannot be empty";
