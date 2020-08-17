@@ -15,32 +15,31 @@ class AppBackButton extends StatelessWidget {
     this.bgColor,
   }) : _isPadded = true;
 
-  const AppBackButton.plain({
-    this.onPressed,
-    this.bgColor
-  }) : _isPadded = false;
+  const AppBackButton.plain({this.onPressed, this.bgColor}) : _isPadded = false;
 
   @override
   Widget build(BuildContext context) {
     final scaler = AppScaleUtil(context);
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: InkWell(
+    return InkWell(
+      child: Align(
+        alignment: Alignment.centerLeft,
         child: Container(
           color: bgColor ?? appWhite,
-          padding: _isPadded ? scaler.insets.symmetric(vertical: .5, horizontal: 2) : scaler.insets.zero,
+          padding: _isPadded
+              ? scaler.insets.symmetric(vertical: .5, horizontal: 2)
+              : scaler.insets.zero,
           child: SvgPicture.asset(
             AppSvgs.back,
           ),
         ),
-        onTap: () {
-          if (onPressed != null) {
-            onPressed();
-          } else {
-            Navigator.of(context).maybePop();
-          }
-        },
       ),
+      onTap: () {
+        if (onPressed != null) {
+          onPressed();
+        } else {
+          Navigator.of(context).maybePop();
+        }
+      },
     );
   }
 }

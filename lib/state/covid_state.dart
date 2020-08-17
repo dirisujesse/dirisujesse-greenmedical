@@ -46,7 +46,6 @@ class CovidState {
       }
       return _data;
     } catch (e) {
-      print(e);
       throw e;
     }
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:roavapp/styles/colors.dart';
 import 'package:roavapp/utils/dimensions.dart';
 
 class AppSpinner extends StatelessWidget {
@@ -23,7 +24,9 @@ class AppSpinner extends StatelessWidget {
                   radius: sizer.setWidth(4),
                 ),
               )
-            : CircularProgressIndicator(),
+            : CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(appTeal),
+              ),
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:roavapp/services/auth_service.dart';
 import 'package:roavapp/styles/colors.dart';
 import 'package:roavapp/utils/dimensions.dart';
 import 'package:roavapp/utils/helpers.dart';
+import 'package:roavapp/utils/snacks.dart';
 import 'package:roavapp/values/json.dart';
 import 'package:roavapp/values/values.dart';
 
@@ -65,10 +66,20 @@ class DashboardPage extends StatelessWidget {
                             activeIndex == dashItems.indexOf(item),
                         activeColor:
                             item.title == "Discharged" ? appOrange : appTeal,
-                        onTap: () {
+                        onTap: () async {
                           if (item.route != "/discharges") {
                             if (item.route == "/emergency") {
                               emergencyCallHandler(context);
+                            }
+                            if (item.route == "/map") {
+                              final doRoute = await checkLocationPermission();
+                              if (!doRoute) {
+                                return showSnack(
+                                  context: context,
+                                  message:
+                                      "You cannot leverage the directions feature if you do not grant us the needed permissions",
+                                );
+                              }
                             }
                             Navigator.of(context).pushNamed(item.route);
                             dashboardIndex.value = dashItems.indexOf(item);
