@@ -12,6 +12,7 @@ class DashboardListItem extends StatelessWidget {
   final Color activeColor;
   final bool isActive;
   final OnPressed onTap;
+  final Key key;
 
   const DashboardListItem({
     @required this.leading,
@@ -20,6 +21,7 @@ class DashboardListItem extends StatelessWidget {
     this.activeColor = appTeal,
     this.isActive = false,
     this.onTap,
+    this.key,
   });
 
   @override
@@ -27,6 +29,7 @@ class DashboardListItem extends StatelessWidget {
     final scaler = AppScaleUtil(context);
 
     return InkWell(
+      key: key,
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
