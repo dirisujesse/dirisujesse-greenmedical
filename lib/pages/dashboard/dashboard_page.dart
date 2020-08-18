@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:roavapp/components/fragments/list_items/dashboard_list_item.dart';
 import 'package:roavapp/components/fragments/spacers/app_sized_box.dart';
+import 'package:roavapp/components/typography/app_text.dart';
 import 'package:roavapp/components/typography/name_text.dart';
 import 'package:roavapp/services/auth_service.dart';
 import 'package:roavapp/styles/colors.dart';
@@ -12,7 +13,11 @@ import 'package:roavapp/values/json.dart';
 import 'package:roavapp/values/values.dart';
 
 class DashboardPage extends StatelessWidget {
-  const DashboardPage();
+  final bool _forTest;
+
+  const DashboardPage() : _forTest = false;
+
+  const DashboardPage.test() : _forTest = true;
 
   Widget build(BuildContext context) {
     final scaler = AppScaleUtil(context);
@@ -34,7 +39,7 @@ class DashboardPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    NameText(),
+                    _forTest ? AppText("Dashboard") : NameText(),
                     IconButton(
                       icon: Icon(
                         Icons.settings_power,
@@ -56,6 +61,7 @@ class DashboardPage extends StatelessWidget {
                     valueListenable: dashboardIndex,
                     builder: (context, int activeIndex, _) {
                       return DashboardListItem(
+                        key: Key(item.route),
                         leading: SvgPicture.asset(
                           item.icon,
                           height: scaler.fontSizer.sp(90),
@@ -68,20 +74,22 @@ class DashboardPage extends StatelessWidget {
                             item.title == "Discharged" ? appOrange : appTeal,
                         onTap: () async {
                           if (item.route != "/discharges") {
-                            if (item.route == "/emergency") {
-                              emergencyCallHandler(context);
-                            }
-                            if (item.route == "/map") {
-                              final doRoute = await checkLocationPermission();
-                              if (!doRoute) {
-                                return showSnack(
-                                  context: context,
-                                  message:
-                                      "You cannot leverage the directions feature if you do not grant us the needed permissions",
-                                );
+                            if (!_forTest) {
+                              if (item.route == "/emergency") {
+                                emergencyCallHandler(context);
                               }
+                              if (item.route == "/map") {
+                                final doRoute = await checkLocationPermission();
+                                if (!doRoute) {
+                                  return showSnack(
+                                    context: context,
+                                    message:
+                                        "You cannot leverage the directions feature if you do not grant us the needed permissions",
+                                  );
+                                }
+                              }
+                              Navigator.of(context).pushNamed(item.route);
                             }
-                            Navigator.of(context).pushNamed(item.route);
                             dashboardIndex.value = dashItems.indexOf(item);
                           }
                         },
